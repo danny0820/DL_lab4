@@ -1,0 +1,44 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.ckpt
+
+# Dataset and output files
+BCSS/
+output.csv
+*.npz
+*.npy
+*.h5
+*.hdf5
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Ignore environment files
+env/
+.venv/
+
+# Ignore notebook outputs
+*.out
+
+# Ignore temporary files
+*.tmp
+*.bak
+~*
