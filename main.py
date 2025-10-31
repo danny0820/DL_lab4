@@ -20,7 +20,7 @@ from utils import plot_loss, plot_score, plot_acc
 
 def main():
     # 設置使用GPU 1和2
-    os.environ["CUDA_VISIBLE_DEVICES"] = "1,2"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0,3"
 
     # 檢查可用的GPU數量
     if torch.cuda.is_available():
@@ -92,14 +92,12 @@ def main():
     print(f"模型已移動到: {device}")
 
     # 訓練超參數
-    max_lr = 0.001
+    max_lr = 0.0006
     epoch = 100
     weight_decay = 0.0001
 
     # 損失函數和優化器
-    # 使用 Focal Loss 替代 CrossEntropyLoss
-    # gamma=2.0 是標準設置，alpha 可以根據類別不平衡情況調整
-    criterion1 = FocalLoss(alpha=1.0, gamma=2.0, reduction='mean')
+    criterion1 = nn.CrossEntropyLoss()
     criterion2 = DiceLoss()
     optimizer = torch.optim.AdamW(model.parameters(), lr=max_lr, weight_decay=weight_decay)
     scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr, epochs=epoch, steps_per_epoch=len(train_loader))
